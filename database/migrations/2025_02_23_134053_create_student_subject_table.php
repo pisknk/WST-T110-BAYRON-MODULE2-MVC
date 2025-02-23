@@ -4,24 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up()
     {
         Schema::create('student_subject', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
-            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
+            $table->string('student_id');
+            $table->string('subject_code');
             $table->timestamps();
+
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('subject_code')->references('subject_code')->on('subjects')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('student_subject');

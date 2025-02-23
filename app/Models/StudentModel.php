@@ -9,7 +9,10 @@ class StudentModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'students'; // Make sure the table name matches your database
+    protected $table = 'students';
+    protected $primaryKey = 'student_id';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $fillable = [
         'student_id',
@@ -22,7 +25,7 @@ class StudentModel extends Model
 
     public function subjects()
     {
-        return $this->belongsToMany(SubjectModel::class, 'student_subject', 'student_id', 'subject_id');
+        return $this->belongsToMany(SubjectModel::class, 'student_subject', 'student_id', 'subject_code', 'student_id', 'subject_code');
     }
 
 }

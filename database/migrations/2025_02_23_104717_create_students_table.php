@@ -8,13 +8,12 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('student_id')->unique();
+            $table->string('student_id')->primary(); // Use student_id as the primary key
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->integer('year_level');
-            $table->integer('semester');
+            $table->string('semester'); // changed to string
             $table->timestamps();
         });
     }
