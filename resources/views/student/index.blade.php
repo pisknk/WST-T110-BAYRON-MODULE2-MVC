@@ -33,6 +33,9 @@
                         <a href="{{ route('editStudent.index', ['student_id' => $student->student_id]) }}" class="btn btn-primary btn-sm">
                             Edit
                         </a>
+                        <a href="{{ route('grade.index', ['student_id' => $student->student_id]) }}" class="btn btn-primary btn-sm">
+                            View Grades
+                        </a>
                     </td>
                 </tr>
             @endforeach
@@ -44,17 +47,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-LkDfPzzPb6hP6q0LmZYUmqgV8v3dMqQf6gH+uOipkuYlTsf21Ybbv2B+IfQefhWc" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#studentTable').DataTable({
-            "paging": true,
-            "searching": true,
-            "info": true,
-            "lengthChange": true,
-            "ordering": true
-        });
-    });
-</script>
 
 @endsection

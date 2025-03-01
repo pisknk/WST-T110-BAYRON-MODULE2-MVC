@@ -21,4 +21,13 @@ class StudentController extends Controller
         $subjects = SubjectModel::all();
         return view('editStudent.index', compact('student', 'subjects'));
     }
+
+    public function destroy($id)
+    {
+        $student = StudentModel::findOrFail($id);
+        $student->delete();
+        
+        return redirect()->route('student.index')
+            ->with('success', 'Student deleted successfully');
+    }
 }

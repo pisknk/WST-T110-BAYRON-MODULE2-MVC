@@ -21,4 +21,9 @@ class SubjectModel extends Model
         return $this->belongsToMany(StudentModel::class, 'student_subject', 'subject_code', 'student_id', 'subject_code', 'student_id');
     }
 
+    public function grades()
+    {
+        return $this->hasMany(GradeModel::class, 'subject_code', 'subject_code');
+    }
+
 }
